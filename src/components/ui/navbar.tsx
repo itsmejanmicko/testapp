@@ -1,6 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./button";
-import { LogOut, Settings, User2Icon, UserRound } from "lucide-react";
+import { LogOut, User2Icon, UserRound } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 

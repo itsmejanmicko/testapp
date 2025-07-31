@@ -1,12 +1,9 @@
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Activity, Pause, Play, Search, Zap } from "lucide-react"
 import Navbar from "../ui/navbar"
 import { Link } from "react-router-dom"
 
 export default function DashboardForm() {
-  const [isRunningTest, setIsRunningTest] = useState(false)
 
   const testButtons = [
     {
