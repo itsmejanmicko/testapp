@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useEffect, useState } from "react"
 import { Activity, CheckCircle, Cpu, AlertTriangle, Zap, Plus, Edit, Trash2, Eye } from "lucide-react"
@@ -14,7 +14,7 @@ import {
   SidebarInset,
 } from "@/components/ui/sidebar"
 import { db } from "@/config/dbConfig"
-import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore"
+import { addDoc, collection, getDocs } from "firebase/firestore"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import {
