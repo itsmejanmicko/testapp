@@ -458,7 +458,7 @@ function PlaceholderTab({ title }: { title: string }) {
 }
 
 export function StressPage() {
-  const [activeTab, setActiveTab] = useState("stress-test")
+  const [activeTab] = useState("stress-test")
 
   const renderContent = () => {
     switch (activeTab) {
