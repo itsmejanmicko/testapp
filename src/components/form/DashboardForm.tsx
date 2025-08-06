@@ -1,102 +1,106 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, Pause, Play, Search, Zap } from "lucide-react"
-import Navbar from "../ui/navbar"
-import { Link } from "react-router-dom"
+import { Activity, Smartphone, Shield, Plus } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 
-export default function DashboardForm() {
-
-  const testButtons = [
+export default function HomePage() {
+  const features = [
     {
-      id: "stress",
-      label: "Stress Test",
-      description: "Test device under heavy load",
-      icon: Zap,
-      link: '/stresstest',
-      color: "bg-red-500/10 hover:bg-red-500/20 border-red-500/20 text-red-400",
+      title: "Stress Test",
+      description: "Run comprehensive performance tests",
+      icon: Activity,
+      color: "from-blue-500 to-blue-600",
     },
     {
-      id: "idle",
-      label: "Idle Test",
-      description: "Monitor device in idle state",
-      icon: Pause,
-      color: "bg-blue-500/10 hover:bg-blue-500/20 border-blue-500/20 text-blue-400",
+      title: "Check Device",
+      description: "Scan and analyze device status",
+      icon: Smartphone,
+      color: "from-sky-500 to-sky-600",
     },
     {
-      id: "dispatch",
-      label: "Dispatch Test",
-      description: "Test task dispatching",
-      icon: Play,
-      color: "bg-green-500/10 hover:bg-green-500/20 border-green-500/20 text-green-400",
+      title: "Device Condition",
+      description: "Monitor health and performance",
+      icon: Shield,
+      color: "from-cyan-500 to-cyan-600",
     },
     {
-      id: "check",
-      label: "Check Device",
-      description: "Comprehensive device check",
-      icon: Search,
-      color: "bg-purple-500/10 hover:bg-purple-500/20 border-purple-500/20 text-purple-400",
+      title: "Add Rules",
+      description: "Configure custom parameters",
+      icon: Plus,
+      color: "from-blue-600 to-indigo-600",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Navbar */}
-      <Navbar />
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900">
+      {/* Header */}
+      <header className="relative z-10 px-6 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg flex items-center justify-center">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold text-white">Whatata</h1>
+            </div>
+            <nav className="hidden md:flex space-x-8">
+        
+            </nav>
+          </div>
+        </div>
+      </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center min-h-[calc(100vh-4rem)] p-4">
-        <div className="w-full max-w-4xl mx-auto">
-          {/* Center Grid Layout */}
-          <div className="text-center mb-12">
-            {/* Main Icon */}
-            <div className="inline-flex items-center justify-center w-18 h-18 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 mb-3">
-              <Activity className="h-8 w-8 text-blue-400" />
-            </div>
+      <main className="relative z-10 px-6 py-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-14">
+            <h2 className="text-5xl md:text-3xl font-bold text-white mb-6 leading-tight">
+              Device Management
+              <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Made Simple
+              </span>
+            </h2>
+            <p className="text-sm text-blue-200 max-w-3xl mx-auto leading-relaxed">
+              Comprehensive device monitoring, testing, and management tools designed for modern workflows
+            </p>
           </div>
 
-          {/* Floating Test Controls */}
-          <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-white">Device Tests</CardTitle>
-              <CardDescription className="text-gray-400">Choose a test to run on your device</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {testButtons.map((test) => {
-                  const Icon = test.icon
-
-                  return (
-                    <Link
-                      key={test.id}
-                      to={test.link ? test.link : '#'} // Use `to` for the Link
-                      className={`h-auto p-6 flex flex-col items-center gap-3 border transition-all duration-200 hover:text-white ${test.color}`}
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon
+              return (
+                <Card
+                  key={index}
+                  className="group relative overflow-hidden bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                >
+                  <CardContent className="p-8 text-center">
+                    <div
+                      className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <div className="flex items-center gap-3 w-full">
-                        <Icon className="h-6 w-6" />
-                        <div className="flex-1 text-left">
-                          <div className="font-semibold text-base">{test.label}</div>
-                          <div className="text-sm opacity-70">{test.description}</div>
-                        </div>
-                      </div>
-                    </Link>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Status Indicators */}
-          <div className="mt-8 flex justify-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-              <span className="text-sm text-gray-400">System Online</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-400">Ready for Testing</span>
-            </div>
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-md font-semibold text-white mb-3">{feature.title}</h3>
+                    <p className="text-blue-200 mb-6 leading-relaxed text-sm">{feature.description}</p>
+                    <Button
+                      className={`w-full bg-gradient-to-r ${feature.color} hover:opacity-90 text-white border-0 font-medium py-3 rounded-xl transition-all duration-300`}
+                    >
+                      Get Started
+                    </Button>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </main>
+
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+      </div>
     </div>
   )
 }
